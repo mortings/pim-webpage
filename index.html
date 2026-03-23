@@ -945,30 +945,87 @@
     }
     .toggle-switch[aria-checked="true"] .toggle-knob { transform: translateX(20px); }
 
-    /* light mode overrides */
-    html.light .hero { background: linear-gradient(160deg, #e8eef8 0%, #d0daf4 50%, #c5d0f0 100%); }
-    html.light .hero-eyebrow { background: rgba(61,116,244,0.12); border-color: rgba(61,116,244,0.25); color: var(--sky-blue); }
-    html.light .hero-title { color: var(--data-navy); }
-    html.light .hero-title .gradient-text { background: linear-gradient(135deg, #0F05CC, #3D74F4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    html.light .hero-subtitle { color: var(--text-muted); }
-    html.light .stat-card { background: #ffffff; border-color: rgba(61,116,244,0.15); }
-    html.light .stat-number { color: var(--sky-blue); }
-    html.light .stat-label { color: var(--text-muted); }
-    html.light .section { background: #edf0f8; }
-    html.light .agent-card { background: #ffffff; border-color: rgba(0,0,0,0.08); }
-    html.light .agent-card h3 { color: var(--data-navy); }
-    html.light .agent-card p { color: var(--text-muted); }
-    html.light .how-section { background: #f4f6fb; }
-    html.light .how-step-num { background: rgba(61,116,244,0.1); color: var(--sky-blue); }
-    html.light .how-step h3, html.light .how-step p { color: var(--data-navy); }
-    html.light .features-section { background: #e8eef8; }
-    html.light .feature-card { background: #ffffff; border-color: rgba(0,0,0,0.07); }
-    html.light .feature-card h3, html.light .feature-card p { color: var(--data-navy); }
-    html.light .proof-section { background: #f4f6fb; }
-    html.light .testimonial-card { background: #ffffff; border-color: rgba(0,0,0,0.07); }
-    html.light .testimonial-card p, html.light .testimonial-author { color: var(--data-navy); }
-    html.light footer { background: #e0e8f4; border-color: rgba(0,0,0,0.08); }
-    html.light .footer-link, html.light .footer-col-title { color: var(--data-navy); }
+    /* ── LIGHT MODE OVERRIDES ── */
+
+    /* Nav */
+    html.light .nav-logo-text { color: var(--data-navy); }
+    html.light .nav-links a { color: rgba(12,46,78,0.65); }
+    html.light .nav-links a:hover { color: var(--data-navy); }
+    html.light .btn-ghost { color: var(--data-navy); border-color: rgba(12,46,78,0.2); }
+    html.light .btn-ghost:hover { border-color: var(--sky-blue); color: var(--sky-blue); }
+
+    /* Hero */
+    html.light .hero { background: linear-gradient(160deg, #dce6f5 0%, #c8d5ef 50%, #beccec 100%); }
+    html.light .hero h1 { color: var(--data-navy); }
+    html.light .hero-sub { color: rgba(12,46,78,0.65); }
+    html.light .hero-badge { background: rgba(61,116,244,0.12); border-color: rgba(61,116,244,0.3); color: var(--electric-blue); }
+    html.light .hero-stats { background: rgba(12,46,78,0.06); border-color: rgba(12,46,78,0.1); }
+    html.light .stat-item { background: rgba(255,255,255,0.6); }
+    html.light .stat-item + .stat-item { border-color: rgba(12,46,78,0.1); }
+    html.light .stat-label { color: rgba(12,46,78,0.5); }
+    html.light .btn-hero-secondary { background: rgba(255,255,255,0.5); color: var(--data-navy); border-color: rgba(12,46,78,0.2); }
+    html.light .btn-hero-secondary:hover { background: rgba(255,255,255,0.75); }
+
+    /* Section headings & sub-text */
+    html.light .section-sub { color: rgba(12,46,78,0.6); }
+    html.light .section-title { color: var(--data-navy); }
+
+    /* Agent cards */
+    html.light .agent-card { background: #ffffff; border-color: rgba(12,46,78,0.1); }
+    html.light .agent-card.featured { background: linear-gradient(135deg, rgba(61,116,244,0.08), rgba(15,5,204,0.05)); border-color: rgba(61,116,244,0.25); }
+    html.light .agent-name { color: var(--data-navy); }
+    html.light .agent-desc { color: rgba(12,46,78,0.6); }
+    html.light .agent-tag { background: rgba(61,116,244,0.1); color: var(--electric-blue); border-color: rgba(61,116,244,0.2); }
+
+    /* "How it works" */
+    html.light .how-section { background: #edf2fa; }
+    html.light .step-title { color: var(--data-navy); }
+    html.light .step-desc { color: rgba(12,46,78,0.58); }
+
+    /* Features */
+    html.light .feature-title { color: var(--data-navy); }
+    html.light .feature-body { color: rgba(12,46,78,0.6); }
+    html.light .pill { color: rgba(12,46,78,0.65); border-color: rgba(12,46,78,0.15); background: rgba(12,46,78,0.04); }
+    html.light .feature-row { border-color: rgba(12,46,78,0.1); }
+
+    /* Mockup cards (inside features) */
+    html.light .mockup-card { background: #f0f4fc; border-color: rgba(12,46,78,0.1); }
+    html.light .m-title { color: rgba(12,46,78,0.5); }
+    html.light .p-lbl { color: rgba(12,46,78,0.55); }
+    html.light .p-bar { background: rgba(12,46,78,0.1); }
+    html.light .p-val { color: var(--data-navy); }
+    html.light .score-box { background: rgba(255,255,255,0.7); border-color: rgba(12,46,78,0.1); }
+    html.light .s-lbl { color: rgba(12,46,78,0.45); }
+    html.light .ch-item { background: rgba(255,255,255,0.65); border-color: rgba(12,46,78,0.1); }
+    html.light .ch-left { color: var(--data-navy); }
+
+    /* Proof / testimonials */
+    html.light .proof-section { background: #e8eef8; border-color: rgba(12,46,78,0.1); }
+    html.light .proof-label { color: rgba(12,46,78,0.4); }
+    html.light .brand-logo { color: rgba(12,46,78,0.3); }
+    html.light .brand-logo:hover { color: rgba(12,46,78,0.65); }
+    html.light .t-card { background: #ffffff; border-color: rgba(12,46,78,0.1); }
+    html.light .t-quote { color: rgba(12,46,78,0.72); }
+    html.light .t-name { color: var(--data-navy); }
+    html.light .t-role { color: rgba(12,46,78,0.45); }
+
+    /* CTA section */
+    html.light .cta-section { background: linear-gradient(160deg, #dce6f5, #c8d5ef); }
+    html.light .cta-section::before { background: radial-gradient(ellipse, rgba(61,116,244,0.15), transparent 70%); }
+    html.light .cta-title { color: var(--data-navy); }
+    html.light .cta-sub { color: rgba(12,46,78,0.62); }
+    html.light .btn-outline { color: var(--data-navy); border-color: rgba(12,46,78,0.25); background: rgba(255,255,255,0.45); }
+    html.light .btn-outline:hover { background: rgba(255,255,255,0.7); }
+
+    /* Footer */
+    html.light footer { border-color: rgba(12,46,78,0.12); }
+    html.light .footer-brand { color: rgba(12,46,78,0.6); }
+    html.light .footer-copy { color: rgba(12,46,78,0.35); }
+    html.light .mach-tag { color: rgba(12,46,78,0.4); border-color: rgba(12,46,78,0.15); }
+
+    /* Scrollbar */
+    html.light ::-webkit-scrollbar-track { background: #e8eef8; }
+    html.light ::-webkit-scrollbar-thumb { background: rgba(61,116,244,0.3); }
   </style>
 </head>
 <body>

@@ -18,15 +18,38 @@
       --white: #ffffff;
       --glass: rgba(255,255,255,0.05);
       --glass-border: rgba(255,255,255,0.1);
+      /* theme tokens */
+      --bg: #050D1F;
+      --surface: rgba(255,255,255,0.04);
+      --text-primary: #ffffff;
+      --text-muted: rgba(255,255,255,0.6);
+      --nav-bg: rgba(5,13,31,0.75);
+      --nav-bg-scroll: rgba(5,13,31,0.94);
+      --card-bg: rgba(255,255,255,0.04);
+      --card-border: rgba(255,255,255,0.08);
+    }
+
+    html.light {
+      --bg: #f4f6fb;
+      --surface: rgba(0,0,0,0.03);
+      --text-primary: #0C2E4E;
+      --text-muted: rgba(12,46,78,0.55);
+      --nav-bg: rgba(244,246,251,0.85);
+      --nav-bg-scroll: rgba(244,246,251,0.97);
+      --card-bg: #ffffff;
+      --card-border: rgba(0,0,0,0.08);
+      --glass: rgba(0,0,0,0.03);
+      --glass-border: rgba(0,0,0,0.08);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background: #050D1F;
-      color: var(--white);
+      background: var(--bg);
+      color: var(--text-primary);
       overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
     }
 
     /* NAV */
@@ -38,7 +61,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 20px 60px;
-      background: rgba(5,13,31,0.75);
+      background: var(--nav-bg);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--glass-border);
       transition: background 0.3s;
@@ -840,6 +863,112 @@
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: #050D1F; }
     ::-webkit-scrollbar-thumb { background: rgba(61,116,244,0.35); border-radius: 3px; }
+
+    /* SETTINGS COG */
+    .settings-wrap { position: relative; }
+
+    .settings-cog {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, color 0.2s, transform 0.4s;
+    }
+    .settings-cog:hover { background: rgba(61,116,244,0.12); color: var(--sky-blue); }
+    .settings-cog.open { transform: rotate(60deg); color: var(--sky-blue); }
+
+    .settings-panel {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 0;
+      width: 220px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      backdrop-filter: blur(20px);
+      opacity: 0;
+      transform: translateY(-6px) scale(0.97);
+      pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 200;
+    }
+    .settings-panel.open {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .settings-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .theme-toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .theme-label {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 12px; font-weight: 600;
+      color: var(--text-primary);
+    }
+    .toggle-switch {
+      position: relative;
+      width: 44px; height: 24px;
+      background: rgba(61,116,244,0.25);
+      border: 1px solid rgba(61,116,244,0.4);
+      border-radius: 99px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.25s;
+    }
+    .toggle-switch[aria-checked="true"] {
+      background: var(--sky-blue);
+      border-color: var(--sky-blue);
+    }
+    .toggle-knob {
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      transition: transform 0.25s;
+    }
+    .toggle-switch[aria-checked="true"] .toggle-knob { transform: translateX(20px); }
+
+    /* light mode overrides */
+    html.light .hero { background: linear-gradient(160deg, #e8eef8 0%, #d0daf4 50%, #c5d0f0 100%); }
+    html.light .hero-eyebrow { background: rgba(61,116,244,0.12); border-color: rgba(61,116,244,0.25); color: var(--sky-blue); }
+    html.light .hero-title { color: var(--data-navy); }
+    html.light .hero-title .gradient-text { background: linear-gradient(135deg, #0F05CC, #3D74F4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    html.light .hero-subtitle { color: var(--text-muted); }
+    html.light .stat-card { background: #ffffff; border-color: rgba(61,116,244,0.15); }
+    html.light .stat-number { color: var(--sky-blue); }
+    html.light .stat-label { color: var(--text-muted); }
+    html.light .section { background: #edf0f8; }
+    html.light .agent-card { background: #ffffff; border-color: rgba(0,0,0,0.08); }
+    html.light .agent-card h3 { color: var(--data-navy); }
+    html.light .agent-card p { color: var(--text-muted); }
+    html.light .how-section { background: #f4f6fb; }
+    html.light .how-step-num { background: rgba(61,116,244,0.1); color: var(--sky-blue); }
+    html.light .how-step h3, html.light .how-step p { color: var(--data-navy); }
+    html.light .features-section { background: #e8eef8; }
+    html.light .feature-card { background: #ffffff; border-color: rgba(0,0,0,0.07); }
+    html.light .feature-card h3, html.light .feature-card p { color: var(--data-navy); }
+    html.light .proof-section { background: #f4f6fb; }
+    html.light .testimonial-card { background: #ffffff; border-color: rgba(0,0,0,0.07); }
+    html.light .testimonial-card p, html.light .testimonial-author { color: var(--data-navy); }
+    html.light footer { background: #e0e8f4; border-color: rgba(0,0,0,0.08); }
+    html.light .footer-link, html.light .footer-col-title { color: var(--data-navy); }
   </style>
 </head>
 <body>
@@ -868,6 +997,30 @@
   <div class="nav-actions">
     <button class="btn-ghost">Log in</button>
     <button class="btn-primary">Book a Demo →</button>
+    <div class="settings-wrap">
+      <button class="settings-cog" id="settingsBtn" aria-label="Settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel">
+        <div class="settings-title">Appearance</div>
+        <div class="theme-toggle-row">
+          <span class="theme-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            Light
+          </span>
+          <button class="toggle-switch" id="themeToggle" role="switch" aria-checked="false">
+            <span class="toggle-knob"></span>
+          </button>
+          <span class="theme-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            Dark
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -1183,9 +1336,44 @@
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
   window.addEventListener('scroll', () => {
+    const isLight = document.documentElement.classList.contains('light');
     document.getElementById('navbar').style.background =
-      scrollY > 40 ? 'rgba(5,13,31,0.94)' : 'rgba(5,13,31,0.75)';
+      scrollY > 40
+        ? (isLight ? 'rgba(244,246,251,0.97)' : 'rgba(5,13,31,0.94)')
+        : 'var(--nav-bg)';
   });
+
+  // Settings cog + theme toggle
+  const settingsBtn = document.getElementById('settingsBtn');
+  const settingsPanel = document.getElementById('settingsPanel');
+  const themeToggle = document.getElementById('themeToggle');
+
+  settingsBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = settingsPanel.classList.toggle('open');
+    settingsBtn.classList.toggle('open', open);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!settingsBtn.contains(e.target) && !settingsPanel.contains(e.target)) {
+      settingsPanel.classList.remove('open');
+      settingsBtn.classList.remove('open');
+    }
+  });
+
+  const applyTheme = (dark) => {
+    document.documentElement.classList.toggle('light', !dark);
+    themeToggle.setAttribute('aria-checked', dark ? 'true' : 'false');
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  };
+
+  themeToggle.addEventListener('click', () => {
+    const isDark = themeToggle.getAttribute('aria-checked') === 'true';
+    applyTheme(!isDark);
+  });
+
+  // Restore saved preference
+  applyTheme(localStorage.getItem('theme') !== 'light');
 </script>
 </body>
 </html>
